@@ -1,12 +1,10 @@
-import { getStoryblokApi } from "./lib/storyblok";
+import Link from "next/link";
 
-export default async function Home() {
-  const storyblokApi = getStoryblokApi();
-  const { data } = await storyblokApi.get("cdn/stories/config", {
-    version: "published",
-  });
-
-  console.log(data);
-
-  return <div>Check your terminal</div>;
+export default function Home() {
+  return (
+    <div>
+      <h1>Welcome</h1>
+      <Link href="/articles">Read our articles</Link>
+    </div>
+  );
 }

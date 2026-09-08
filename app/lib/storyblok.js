@@ -7,3 +7,11 @@ export const getStoryblokApi = storyblokInit({
     region: process.env.STORYBLOK_REGION,
   },
 });
+
+export async function getConfig() {
+  const storyblokApi = getStoryblokApi();
+  const { data } = await storyblokApi.get("cdn/stories/config", {
+    version: "published",
+  });
+  return data.story.content;
+}

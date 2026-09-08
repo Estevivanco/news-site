@@ -1,8 +1,17 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app), using [Storyblok](https://www.storyblok.com/) as a headless CMS.
 
 ## Getting Started
 
-First, run the development server:
+Copy `.env.example` to `.env` and fill in your Storyblok space's Content Delivery API token and region:
+
+```bash
+cp .env.example .env
+```
+
+- `STORYBLOK_DELIVERY_API_TOKEN` — found in Storyblok under Settings → Access Tokens (use the "Preview" token for draft content, "Public" for published-only)
+- `STORYBLOK_REGION` — `eu`, `us`, `ap`, `ca`, or `cn`, depending on where your space was created
+
+Then, run the development server:
 
 ```bash
 npm run dev
