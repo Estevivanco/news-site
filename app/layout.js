@@ -27,7 +27,11 @@ export default async function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Header siteTitle={config.site_title} navItems={config.header} />
+        <Header
+          siteTitle={config.site_title}
+          logo={config.logo}
+          navItems={config.header}
+        />
         <main className="flex-1">{children}</main>
         <Footer text={config.footer_text} />
       </body>
