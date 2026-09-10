@@ -58,3 +58,41 @@ export async function getArticle(slug) {
     throw error;
   }
 }
+
+export async function getAuthor(slug) {
+  const storyblokApi = getStoryblokApi();
+  try {
+    const { data } = await storyblokApi.get(`cdn/stories/authors/${slug}`, {
+      version: "published",
+    });
+    return data.story;
+  } catch (error) {
+    if (error.status === 404) {
+      return null;
+    }
+    throw error;
+  }
+}
+
+export async function getAuthors() {
+  const storyblokApi = getStoryblokApi();
+  const { data } = await storyblokApi.get("cdn/stories", {
+    version: "published",
+    starts_with: "authors/",
+  });
+  return data.stories;
+}
+
+export async function getArticlesByAuthor(authorUuid) {
+  const storyblokApi = getStoryblokApi();
+  const { data } = await storyblokApi.get("cdn/stories", {
+    version: "published",
+    starts_with: "articles/",
+    filter_query: {
+      author: {
+        in: authorUuid,
+      },
+    },
+  });
+  return data.stories
+}
