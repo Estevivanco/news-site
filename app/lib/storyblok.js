@@ -96,3 +96,12 @@ export async function getArticlesByAuthor(authorUuid) {
   });
   return data.stories
 }
+
+export async function getStories() {
+  const storyblokApi = getStoryblokApi()
+  const { data } = await storyblokApi.get("cdn/stories", {
+    version: "published",
+    starts_with: "articles/,authors/",
+  })
+  return data.stories
+}
