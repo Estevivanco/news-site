@@ -27,6 +27,22 @@ export async function getArticles() {
   return data.stories;
 }
 
+export async function getArticle(slug) {
+  const storyblokApi = getStoryblokApi();
+  try {
+    const { data } = await storyblokApi.get(`cdn/stories/articles/${slug}`, {
+      version: "published",
+      resolve_relations: "article.author",
+    });
+    return data.story;
+  } catch (error) {
+    if (error.status === 404) {
+      return null;
+    }
+    throw error;
+  }
+}
+
 export async function getArticlesByCategory(category) {
   const storyblokApi = getStoryblokApi();
   const { data } = await storyblokApi.get("cdn/stories", {
@@ -43,19 +59,18 @@ export async function getArticlesByCategory(category) {
   return data.stories;
 }
 
-export async function getArticle(slug) {
-  const storyblokApi = getStoryblokApi();
+export async function getCategory(slug) {
+  const storyblokApi = getStoryblokApi()
   try {
-    const { data } = await storyblokApi.get(`cdn/stories/articles/${slug}`, {
-      version: "published",
-      resolve_relations: "article.author",
-    });
-    return data.story;
+    const { data } = await storyblokApi.get(`cdn/stories/categories/${slug}`, {
+      version: "published"
+    })
+    return data.story
   } catch (error) {
     if (error.status === 404) {
-      return null;
+      return null
     }
-    throw error;
+    throw error
   }
 }
 
