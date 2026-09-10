@@ -1,4 +1,8 @@
 import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
+import Article from "../components/Article";
+import Author from "../components/Author";
+import Category from "../components/Category";
+import FilteredPosts from "../components/FilteredPosts";
 
 export const getStoryblokApi = storyblokInit({
   accessToken: process.env.STORYBLOK_DELIVERY_API_TOKEN,
@@ -6,6 +10,12 @@ export const getStoryblokApi = storyblokInit({
   apiOptions: {
     region: process.env.STORYBLOK_REGION,
   },
+  components: {
+    article: Article,
+    author: Author,
+    category: Category,
+    "filtered-posts": FilteredPosts
+  }
 });
 
 export async function getConfig() {
