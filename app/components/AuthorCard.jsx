@@ -10,7 +10,7 @@ export default function AuthorCard({ author }) {
       href={`/authors/${author.slug}`}
       className="group flex flex-col overflow-hidden rounded-lg border border-black/10 transition-colors hover:border-accent dark:border-white/15"
     >
-      <div className="relative aspect-[16/9] w-full bg-zinc-100 dark:bg-zinc-900">
+      <div className="relative aspect-square w-full bg-zinc-100 dark:bg-zinc-900">
         {photoUrl ? (
           <Image
             src={photoUrl}
