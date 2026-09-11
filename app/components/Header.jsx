@@ -13,7 +13,7 @@ export default function Header({ siteTitle, logo, navItems }) {
   const logoUrl = logo?.filename;
 
   return (
-    <header className="grid grid-cols-[1fr_auto_1fr] items-center gap-4 bg-accent px-6 py-4">
+    <header className="relative z-50 grid grid-cols-[1fr_auto_1fr] items-center gap-4 bg-accent px-6 py-4">
       <Link href="/" className="justify-self-start">
         {logoUrl ? (
           <Image
@@ -60,7 +60,7 @@ function NavItem({ item }) {
 
       {hasChildren && (
         <ul
-          className={`absolute left-0 top-full min-w-[10rem] rounded-md bg-white py-2 shadow-lg transition-opacity ${
+          className={`absolute left-0 top-full z-50 min-w-[10rem] rounded-md bg-white py-2 shadow-lg transition-opacity ${
             open ? "opacity-100" : "pointer-events-none opacity-0"
           }`}
         >
