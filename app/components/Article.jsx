@@ -5,11 +5,11 @@ import { StoryblokServerRichText } from "@storyblok/react/rsc";
 export default function Article({ blok }) {
   const { title, summary, category, cover_image, author, content } = blok;
   const authorName = author?.[0]?.content?.name;
-  const authorSlug = author?.[0]?.content?.slug;
+  const authorSlug = author?.[0]?.slug;
   const coverUrl = cover_image?.filename;
 
   return (
-    <article className="mx-auto max-w-2x1 px-6 py-10">
+    <article className="mx-auto max-w-2xl px-6 py-10">
       {category && (
         <span className="w-fit rounded-full bg-accent/10 px-2 py-0.5 text-xs uppercase tracking-wide text-accent">
           {category}
