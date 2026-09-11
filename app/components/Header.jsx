@@ -49,14 +49,13 @@ function NavItem({ item }) {
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      <Link
-        href={resolveHref(item.link)}
-        className="relative font-bold uppercase text-white after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100"
-        aria-expanded={hasChildren ? open : undefined}
-        aria-haspopup={hasChildren ? "true" : undefined}
-      >
+      <span
+          className="relative cursor-default font-bold uppercase text-white"
+          aria-expanded={open}
+          aria-haspopup="true"
+        >
         {item.label}
-      </Link>
+      </span>
 
       {hasChildren && (
         <ul
